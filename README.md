@@ -1,5 +1,57 @@
 # 박수정 202030311
 
+## [ 09월 29일 ]
+- 상대경로 이미지 삽입 -> 필요한 곳에 <img src="">태그 작성
+<hr>
+
+```javascript
+Food.propTypes = {
+    name: PropTypes.string.isRequired
+    picture: PropTypes.string.isRequired
+    rating: PropTypes.number
+}
+```
+- rating(평점)같이 숫자로 표현해야하는 것은 자료형 number로 함
+- prop-types : 자료형을 검사, props의 이름 검사
+- isRequired 필요하다라는 뜻인데 때에 따라 없어도 됌
+<hr>
+- state : 동적 데이터를 다룰 때 사용, 클래스형 컴포넌트에 사용할 수 있는 개념
+
+```javascript
+class App extends React.Component {} // 컴포넌트의 기본 뼈대
+```
+-> 리액트가 제공하는 컴포넌트 클래스 상속 <br>
+
+| 클래스형 컴포넌트에서는 JSX를 반환하기 위해 render() 함수 사용
+
+#### 함수형 컴포넌트는 return 문이 JSX 반환 BUT, 클래스형 컴포넌트는 render()함수가 JSX 반환
+
+```javascript
+class App extends React.Component {
+    state = {
+        //객체 형태의 데이터 반드시 소문자(state)를 이용
+    }
+}
+```
+<hr>
+
+- state 직접 변경 x
+=> state가 변경되면 render() 함수를 다시 실행하며 변경된 state 화면 출력 BUT, state를 직접 변경하면 render() 함수 다시 실행x <br>
+
+| setState() 함수가 새 state가 전달 -> state가 업데이트 -> render()함수 자동 실행 -> 화면업데이트
+- setState() 함수는 state 데이터만 업데이트, 즉 바뀐 데이터만 업데이트
+<hr>
+
+- 생명주기 함수
+- constructor() : render()함수보다 먼저 실행, Component를 생성할 때 state 값을 초기화하거나 메서드를 바인딩할 때 사용
+- componentDidMount() : render()함수보다 나중에 실행
+| constructor() 함수 실행 -> render() 함수 실행 -> componentDidMount() 함수 실행
+- componentDidUpdate() : 화면이 업데이트되면 실행
+| setState() 함수 실행 -> render() 함수 실행 -> componentDidUpdate() 함수 실행
+- componentWillMount() : 버전이 올라가면서 사용 x, 컴포넌트가 화면에서 떠날 때 실행
+
+***
+
 ## [ 09월 15일 ]
 
 - 컴포넌트 작성 시 이름 대문자로 시작
