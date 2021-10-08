@@ -1,5 +1,38 @@
 # 박수정 202030311
 
+## [10월 6일]
+
+```javascript
+componentDidMount() {
+    setTimeout(() => {
+        this.setState({ isLoading: false});
+    }, 6000)
+}
+```
+=> setTime() 함수 첫 번째 인자로 전달한 함수를 두 번째 인자로 전달한 값(밀리초) 후에 실행 <br><br>
+
+<hr>
+- axios 활용한 API 호출, 네트워크를 사용해 느리게 작동
+- API는 특정 주소를 입력하면 그 주소에 맞는 결과 출력, 특정 주소에 조건을 붙여 입력하면 그 조건까지 고려한 결과 출력
+- getMoives() 함수는 시간이 필요 -> async,await 키워드 사용
+
+```javascript
+getMoives = async () => {
+    const movies = await axios.get('https://yts-proxy.now.sh/list_movies.json')
+}
+```
+
+<hr>
+
+- 객체의 키와 대입할 변수의 이름이 같다면 코드 축약
+
+```javascript
+this.setState({movies: movies})
+this.setState({movies})
+```
+
+***
+
 ## [ 09월 29일 ]
 - 상대경로 이미지 삽입 -> 필요한 곳에 <img src="">태그 작성
 <hr>
