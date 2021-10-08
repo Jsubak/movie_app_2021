@@ -1,6 +1,6 @@
 # 박수정 202030311
 
-## [10월 6일]
+## [ 10월 6일 ]
 
 ```javascript
 componentDidMount() {
