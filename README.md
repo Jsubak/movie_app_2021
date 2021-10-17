@@ -1,5 +1,49 @@
 # 박수정 202030311
 
+## [ 10월 13일 ]
+
+```javascript
+    this.setState({moives: movies})
+    처음은 movies state 뒤에 movies 이건 구조 분해 할당으로 얻은 영화 데이터가 있는 변수
+```
+- Movie.propTypes 추가  
+-- id, year - number | title, summary, poster - sting  
+
+- API  
+-- Parameter = sort_by 영화데이터 정렬
+
+- 로딩이 다 되면 실행되는 자리 movies.map()
+
+```javascript
+    render() {
+        const { isLoading, movies } = this.state;
+        return <div>{isLoading ? 'Loading...' : movies.map()}</div>
+    }
+```
+
+- key props : 유일하고, API에서 넘겨주는 id값 사용
+
+- 컴포넌트에 HTML 추가
+-- 교재에서는 클래스이름을 __을 넣어 표기했지만 그렇게하면 좋지않음
+
+
+```javascript
+    return(
+        <section class ="container">
+          {isLoading ? (
+              <div class="loader">
+                <span class="loaderText">Loading...</span>
+              </div>
+          ) : (
+              <div class="movies"> {...}
+              </div>
+          )}
+        </section>
+    )
+```
+- 리액트에서 class를 쓰기위해서는 className을 써야함
+<hr>
+
 ## [ 10월 6일 ]
 
 ```javascript
