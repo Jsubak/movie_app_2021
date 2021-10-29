@@ -1,5 +1,52 @@
 # 박수정 202030311
 
+## [ 10월 27일]
+
+```javascript
+    geners.map((genre, index => {...}))
+    genre에 geners 배열 원소, index에는 1,2,3, ...번째임을 알리는 숫자 전달
+```
+
+<hr>
+
+- 문자열 제한  
+-- slice(시작, 끝), 끝은 포함되지않음  
+-- ex) "hereisstring".slice(0,10) -> "hereisstri"  
+
+<hr>
+
+- 라우터 : 화면을 이동 시켜주는 장치  
+-- 사용자가 입력한 URL을 통해 특정 컴포넌트를 부름  
+
+| Route 2가지 props 전달
+1. URL을 위한 path props
+2. URL에 맞는 컴포넌트를 불러주기 위한 component props
+
+```javascript
+    function App() {
+  return (
+    <HashRouter>
+      <Route path="/home">
+        <h1>Home</h1>
+      </Route>
+      <Route path="/home/introduction">
+        <h1>Introduction</h1>
+      </Route>
+      <Route path="/about">
+        <h1>About</h1>
+      </Route>
+    </HashRouter>
+  )
+}
+```
+
+- 사용자가 /home/introduction에 접속하면 /, /home/introduction 순서로 path props가 있는지 찾음
+- path props에 /home, /home/introduction가 모두 있어 Home, introduction 컴포넌트 둘다 그려짐
+
+| exact props는 Route 컴포넌트가 path props와 정확하게 일치하는 URL에만 반응하게 만들어 줌
+
+***
+
 ## [ 10월 13일 ]
 
 ```javascript
