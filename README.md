@@ -1,6 +1,52 @@
 # 박수정 202030311
 
-## [ 10월 27일]
+## [ 11월 3일 ]
+
+```javascript
+function App() {
+    return (
+        <HashRouter>
+        <Route path="/" exact={true} component={Home}></Route>
+        <Route path="/about" component={About}></Route>
+        </HashRouter>
+    )
+}
+```
+-> 링크를 누를 때마다 리액트가 죽고, 세 페이지가 열리는, 즉 화면 전체가 새로고침되는 문제가 있음  
+=> react-router-dom의 Link 컴포넌트를 사용하면 됨
+<hr>
+
+- 영화 카드를 누르면 상세정보를 보여주는 기능
+| route props : 라우팅 대상이 되는 컴포넌트에 넘겨주는 기본 props
+
+- pathname: URL을 의미
+- state : route props에 보내줄 데이터를 의미
+- state가 undefined. 영화데이터가 넘어오지 못함. 사용자를 강제로 Home 돌려보내기. 리다이렉트 기능
+- 리다이렉트 기능 : route props의 history 키 활용
+- history : URL을 변경해주는 함수들
+- componentDidMount() 생명주기 함수에 작성한 리다이렉트 기능 동작x 
+
+```javascript
+    componentDidMount() {
+        const {location, history} = this.props;
+        if (location.state === undefined) {
+            history.push('/')
+        }
+    }
+
+    render() {
+        const {location} = this.props
+        return <span>{location.state.title}</span>
+    }
+```
+
+| componentDidMount() 생명주기 함수에 작성한 리다이렉트 기능이 동작 x
+| render() -> componentDidMout() 순서로 함수 실행
+| render() 함수 내에서 location.state가 undefined
+
+***
+
+## [ 10월 27일 ]
 
 ```javascript
     geners.map((genre, index => {...}))
