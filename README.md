@@ -40,8 +40,8 @@ function App() {
     }
 ```
 
-| componentDidMount() 생명주기 함수에 작성한 리다이렉트 기능이 동작 x
-| render() -> componentDidMout() 순서로 함수 실행
+| componentDidMount() 생명주기 함수에 작성한 리다이렉트 기능이 동작 x  
+| render() -> componentDidMout() 순서로 함수 실행  ㄴ
 | render() 함수 내에서 location.state가 undefined
 
 ***
