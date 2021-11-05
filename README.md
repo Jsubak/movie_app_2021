@@ -17,12 +17,12 @@ function App() {
 <hr>
 
 - 영화 카드를 누르면 상세정보를 보여주는 기능
-| route props : 라우팅 대상이 되는 컴포넌트에 넘겨주는 기본 props
+> route props : 라우팅 대상이 되는 컴포넌트에 넘겨주는 기본 props
 
 - pathname: URL을 의미
 - state : route props에 보내줄 데이터를 의미
 - state가 undefined. 영화데이터가 넘어오지 못함. 사용자를 강제로 Home 돌려보내기. 리다이렉트 기능
-- 리다이렉트 기능 : route props의 history 키 활용
+> 리다이렉트 기능 : route props의 history 키 활용
 - history : URL을 변경해주는 함수들
 - componentDidMount() 생명주기 함수에 작성한 리다이렉트 기능 동작x 
 
@@ -41,7 +41,7 @@ function App() {
 ```
 
 | componentDidMount() 생명주기 함수에 작성한 리다이렉트 기능이 동작 x  
-| render() -> componentDidMout() 순서로 함수 실행  ㄴ
+| render() -> componentDidMout() 순서로 함수 실행  
 | render() 함수 내에서 location.state가 undefined
 
 ***
