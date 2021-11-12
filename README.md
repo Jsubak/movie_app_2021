@@ -1,5 +1,42 @@
 # 박수정 202030311
 
+## [ 11월 10일 ]
+
+> 깃허브에 올리기
+- package.json에 추가
+- "Homepage" : "깃허브 링크"
+- "predeploy": "npm run build",
+- "deploy": "gh-pages -d build"  
+
+- 터미널에 입력
+- npm install gh-pages
+- npm run deploy
+
+> cdn링크를 통해 React 사용
+- CDN을 통해 React를 사용한다면, crossorigin 어트리뷰트(attribute)와 함께 사용하는 것을 권장
+
+```javascript
+    <script crossorigin src=""></script>
+```
+
+> JSX 추가
+```javascript
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script> 을 넣고
+    어떤 <script> 태그에서든 type="text/babel"성질을 추가 하면 사용가능
+```
+
+> 리액트가 등장한 이유 : 동적인 웹페이지를 보다 효율적으로 유지보수 관리를 하기 위함
+- 동적인 페이지는 유저의 행동 흐름에 따라 웹페이지의 구성을 달리해주어야 하는 페이지
+- 선언형 React는 상호작용이 많은 UI를 만들 때 생기는 어려움을 줄여줌  
+-> 애플리케이션의 각 상태에 대한 간단한 뷰만 설계  
+-> 데이터가 변경됨에 따라 적절한 컴포넌트만 효율적으로 갱신하고 렌더링
+- this.props를 이용해 입력 데이터를 다룸  
+- 내부적인 상태 데이터를 가질 수 있음, this.state로 접근
+- JSX(Javascript + xml)는 자바스크립트에 대한 확장 구문으로서, 리액트에서 element(요소)를 제공
+- 외부 플러그인을 사용하는 컴포넌트 : React는 유연하며 다른 라이브러리나 프레임워크를 함께 활용할 수 있음
+
+***
+
 ## [ 11월 3일 ]
 
 ```javascript
