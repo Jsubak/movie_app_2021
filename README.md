@@ -1,5 +1,69 @@
 # 박수정 202030311
 
+## [ 11월 17일 ]
+
+> Todo List
+- handleChange는 모든 키보드 입력마다 state 갱신
+- 사용자입력 -> handleChange -> React의 state 갱신
+
+```javascript
+    handleChange(event) {
+        this.setState({value: event.target.value.toUpperCase()})
+    }
+
+    // 유저 입력을 강제로 대문자 변경
+```
+- htmlFor id 값, className처럼 구분하기 위해쓰는 키워드
+
+```javascript
+    <label htmlFor="new-todo">
+        What needs to be done?
+    </label>
+```
+
+- handleSubmit은 버튼이 클릭될 때 발생하는 event를 처리
+- item.length : list 수 확인  
+
+
+```javascript
+     handleSubmit(e) {
+        e.preventDefault();
+        if (this.state.text.length === 0) {
+            return;
+        }
+        const newItem = {
+            text: this.state.text,
+            id: Date.now()
+        };
+        this.setState(state => ({
+            items: state.items.concat(newItem),
+            text: ''
+        }));
+  }
+```
+=> handleSubmit(e)에서 e.preventDefault() 메소드를 사
+용하는 이유 : 브라우저에서 양식을 제출할 때는 기본적으로 브라우저의 새로 고침이 발생, React, SPA는 필요 없는 동작이기에 방지하기위해 사용
+
+- remarkable cdn
+```html
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/2.0.1/remarkable.min.js" integrity="sha512-skYYbQHAuOTpeJTthhUH3flZohep8blA+qjZOY0VqmfXMDiYcWxu29F5UbxU4LxaIpGkRBk+3Qf8qaXfd9jngg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+```
+
+- 외부 플러그인 사용
+- npx-create-react-app markdown-editor 로 새로운 프로젝트 생성  
+
+- class MarkdownEditor extends React.Component -> MarkdownEditor부분을 App으로 변경  
+
+```javascript
+    import React from 'react'
+    import { Remarkable } from 'remarkable'
+    //추가 
+```
+
+
+
+***
+
 ## [ 11월 10일 ]
 
 > 깃허브에 올리기
