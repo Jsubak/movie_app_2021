@@ -1,5 +1,75 @@
 # 박수정 202030311
 
+## [ 11월 24일 ]
+> JSX
+- JavaScript를 확장한 문법, React “엘리먼트(element)” 를 생성
+```jsx
+    const element = <h1>Hello, world!</h1>;
+```
+
+- React에서는 본질적으로 렌더링 로직이 UI 로직(이벤트가 처리되는 방식, 시간에 따라 state가 변하는 방식, 화면에 표시하기 위해 데이터가 준비되는 방식 등)과 연결
+- JavaScript 코드 안에서 UI 관련 작업을 할 때 시각적으로 더 도움 됨  
+
+> 표현식 포함
+```jsx
+    const name = 'Josh Perez';
+    const element = <h1>Hello, {name}</h1>;
+
+    // 변경 후
+    function formatName(user) {
+        return user.firstName + ' ' + user.lastName;
+    }
+
+    const user = {
+    firstName: 'Harper',
+    lastName: 'Perez'
+    };
+
+    const element = (
+    <h1>
+        Hello, {formatName(user)}!
+    </h1>
+    );
+```
+
+- JSX의 중괄호 안에는 유효한 모든 JavaScript 표현식을 넣을 수 있음
+
+> JSX도 표현식
+- JSX를 if 구문 및 for loop 안에 사용하고, 변수에 할당하고, 인자로서 받아들이고, 함수로부터 반환가능  
+
+```jsx
+    // ""를 이용해 문자열 리터럴정의
+    const element = <div tabIndex="0"></div>;
+
+    // 중괄호를 이용해 자바스크립트 표현식 삽입
+    const element = <img src={user.avatarUrl}></img>;
+```
+- class는 className가 되고 tabindex는 tabIndex
+- 태그가 비어있다면 XML처럼 /> 를 이용해 바로 닫아주어야 함
+- JSX 태그는 자식을 포함가능  
+
+> Babel은 JSX를 React.createElement() 호출로 컴파일
+
+```javascript
+    const element = (
+        <h1 className="greeting">
+            Hello, world!
+        </h1>
+    );
+
+    // 동일함
+    const element = React.createElement(
+        'h1',
+        {className: 'greeting'},
+        'Hello, world!'
+    );
+
+```
+
+> 엘리먼트는 React 앱의 가장 작은 단위
+- 모든 엘리먼트를 React DOM에서 관리하기 때문에 이것을 “루트(root)” DOM 노드
+***
+
 ## [ 11월 17일 ]
 
 > Todo List
