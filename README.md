@@ -79,6 +79,38 @@
 - 직접 State를 수정 x
 - State 업데이트는 비동기적일 수도 있음
 - State 업데이트는 병합
+
+> 이벤트 처리
+- React의 이벤트는 소문자 대신 캐멀 케이스(camelCase)를 사용
+- JSX를 사용하여 문자열이 아닌 함수로 이벤트 핸들러를 전달
+
+```jsx
+    <button onClick={activateLasers}>
+        Activate Lasers
+    </button>
+```
+- false를 반환해도 기본 동작을 방지할 수 없음. 반드시 preventDefault를 명시적으로 호출
+
+```jsx
+    function Form() {
+        function handleSubmit(e) {
+            e.preventDefault();
+            console.log('You clicked submit.');
+    }
+
+        return (
+            <form onSubmit={handleSubmit}>
+                <button type="submit">Submit</button>
+            </form>
+        );
+    }
+```
+
+- DOM 엘리먼트가 생성된 후 리스너를 추가하기 위해 addEventListener를 호출할 필요가 없음 대신, 엘리먼트가 처음 렌더링될 때 리스너를 제공  
+- 컴포넌트를 정의할 때, 일반적인 패턴은 이벤트 핸들러를 클래스의 메서드로 만드는 것
+
+> 이벤트 핸들러에 인자 전달
+- 루프 내부에서는 이벤트 핸들러에 추가적인 매개변수를 전달하는 것
 ***
 
 ## [ 11월 24일 ]
