@@ -1,5 +1,86 @@
 # 박수정 202030311
 
+## [ 12월 1일 ]
+
+- Clock이 타이머를 설정하고 매초 UI를 업데이트하는 것이 Clock의 구현 세부사항
+```jsx
+    function tick() {
+        ReactDOM.render(
+            <Clock date={new Date()} />,
+            document.getElementById('root')
+        );
+    }
+    // 한 번만 코드를 작성하고 Clock이 스스로 업데이트, Clock 컴포넌트에 “state”를 추가
+    //<Clock />,
+    //document.getElementById('root')
+```
+- State는 props와 유사하지만, 비공개이며 컴포넌트에 의해 완전히 제어  
+> 함수에서 클래스로 변환하기
+1. React.Component를 확장하는 동일한 이름의 ES6 class를 생성
+2. render()라고 불리는 빈 메서드를 추가
+3. 함수의 내용을 render() 메서드 안으로 옮김.
+4. render() 내용 안에 있는 props를 this.props로 변경
+5. 남아있는 빈 함수 선언을 삭제
+
+```jsx
+    class Clock extends React.Component {
+        render() {
+            return (
+            <div>
+                <h1>Hello, world!</h1>
+                <h2>It is {this.props.date.toLocaleTimeString()}.</h2>
+            </div>
+         );
+        }
+    }
+```
+- Clock은 이제 함수가 아닌 클래스로 정의  
+
+> 클래스에 로컬 State 추가
+1. render() 메서드 안에 있는 this.props.date를 this.state.date로 변경
+2. 초기 this.state를 지정하는 class constructor를 추가
+3. <Clock /> 요소에서 date prop을 삭제
+
+```jsx
+    class Clock extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {date: new Date()};
+        }
+
+        render() {
+            return (
+                <div>
+                    <h1>Hello, world!</h1>
+                    <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+                </div>
+            );
+        }
+    }
+
+    ReactDOM.render(
+        <Clock />,
+        document.getElementById('root')
+    );
+```
+> 생명주기 메서드를 클래스에 추가
+
+- Clock이 처음 DOM에 렌더링 될 때마다 타이머를 설정 => 마운팅
+- Clock에 의해 생성된 DOM이 삭제될 때마다 타이머를 해제 => 언마운팅
+```jsx
+    componentDidMount() {
+    }
+
+    componentWillUnmount() {
+    }
+```
+
+> State를 올바르게 사용
+- 직접 State를 수정 x
+- State 업데이트는 비동기적일 수도 있음
+- State 업데이트는 병합
+***
+
 ## [ 11월 24일 ]
 > JSX
 - JavaScript를 확장한 문법, React “엘리먼트(element)” 를 생성
