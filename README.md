@@ -1,5 +1,138 @@
 # 박수정 202030311
 
+## [ 12월 8일 ]
+
+> 리스트와 key
+- map()함수를 이용하여 numbers 배열의 값을 두배로 만든 후 map()에서 반환하는 새 배열을 doubled 변수에 할당하고 로그를 확인하는 코드
+
+```jsx
+    const numbers = [1, 2, 3, 4, 5];
+    const doubled = numbers.map((number) => number * 2);
+    console.log(doubled);
+```
+
+> 여러개의 컴포넌트 렌더링
+- 엘리먼트 모음을 만들고 중괄호 {}를 이용하여 JSX에 포함
+```jsx
+    const numbers = [1, 2, 3, 4, 5];
+    const listItems = numbers.map((number) =>
+        <li>{number}</li>
+    );
+
+    ReactDOM.render(
+        <ul>{listItems}</ul>,
+        document.getElementById('root')
+    );
+```
+
+- 일반적으로 컴포넌트 안에서 리스트를 렌더링
+- numbers 배열을 받아서 순서 없는 엘리먼트 리스트를 출력하는 컴포넌트로 리팩토링
+
+```jsx
+function NumberList(props) {
+  const numbers = props.numbers;
+  const listItems = numbers.map((number) =>
+    <li>{number}</li>
+  );
+  return (
+    <ul>{listItems}</ul>
+  );
+}
+
+const numbers = [1, 2, 3, 4, 5];
+ReactDOM.render(
+  <NumberList numbers={numbers} />,
+  document.getElementById('root')
+);
+// “key”는 엘리먼트 리스트를 만들 때 포함해야 하는 특수한 문자열 어트리뷰트
+```
+- Key는 React가 어떤 항목을 변경, 추가 또는 삭제할지 식별하는 것을 도움, 엘리먼트에 안정적인 고유성을 부여하기 위해 배열 내부의 엘리먼트에 지정
+
+```jsx
+const numbers = [1, 2, 3, 4, 5];
+const listItems = numbers.map((number) =>
+  <li key={number.toString()}>
+    {number}
+  </li>
+);
+```
+- Key를 선택하는 가장 좋은 방법은 리스트의 다른 항목들 사이에서 해당 항목을 고유하게 식별할 수 있는 문자열을 사용
+
+```jsx
+const todoItems = todos.map((todo) =>
+  <li key={todo.id}>
+    {todo.text}
+  </li>
+);
+// 안정적인 ID가 없다면 최후의 수단으로 항목의 인덱스를 key로 사용
+//const todoItems = todos.map((todo, index) =>
+  // Only do this if items have no stable IDs
+// <li key={index}>
+//  {todo.text}
+// </li>
+//);
+```
+- 주변 배열의 context에서만 의미가 있음  
+> key는 형제 사이에서만 고유한 값, 전체 범위에서 고유할 필요x, 두 개의 다른 배열을 만들 때 동일한 key를 사용할 수 있음
+
+```jsx
+function Blog(props) {
+  const sidebar = (
+    <ul>
+      {props.posts.map((post) =>
+        <li key={post.id}>
+          {post.title}
+        </li>
+      )}
+    </ul>
+  );
+  const content = props.posts.map((post) =>
+    <div key={post.id}>
+      <h3>{post.title}</h3>
+      <p>{post.content}</p>
+    </div>
+  );
+  return (
+    <div>
+      {sidebar}
+      <hr />
+      {content}
+    </div>
+  );
+}
+
+const posts = [
+  {id: 1, title: 'Hello World', content: 'Welcome to learning React!'},
+  {id: 2, title: 'Installation', content: 'You can install React from npm.'}
+];
+ReactDOM.render(
+  <Blog posts={posts} />,
+  document.getElementById('root')
+);
+```
+
+- JSX를 사용하면 중괄호 안에 모든 표현식을 포함 시킬 수 있으므로 map() 함수의 결과를 인라인으로 처리
+
+```jsx
+function NumberList(props) {
+  const numbers = props.numbers;
+  return (
+    <ul>
+      {numbers.map((number) =>
+        <ListItem key={number.toString()}
+                  value={number} />
+      )}
+    </ul>
+  );
+}
+```
+
+> 폼
+- JavaScript 함수로 폼의 제출을 처리하고 사용자가 폼에 입력한 데이터에 접근하도록 하는 것이 편리 -> 표준 방식은 “제어 컴포넌트 (controlled components)“라고 불리는 기술을 이용
+> 제어 컴포넌트 (Controlled Component)
+- React에서는 변경할 수 있는 state가 일반적으로 컴포넌트의 state 속성에 유지되며 setState()에 의해 업데이트
+- React state를 “신뢰 가능한 단일 출처 (single source of truth)“로 만들어 두 요소를 결합 그러면 폼을 렌더링하는 React 컴포넌트는 폼에 발생하는 사용자 입력값을 제어 => React에 의해 값이 제어되는 입력 폼 엘리먼트를 “제어 컴포넌트 (controlled component)“
+
 ## [ 12월 1일 ]
 
 - Clock이 타이머를 설정하고 매초 UI를 업데이트하는 것이 Clock의 구현 세부사항
